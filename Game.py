@@ -1,5 +1,5 @@
-from Player import Player
-from Building import Building
+import Player
+import Building
 
 
 class Game:
@@ -11,8 +11,8 @@ class Game:
 
     def create_players(self, number_of_players):
         for n in range(number_of_players):
-            starting_deck = [Building('Tavern', 'green', 1),
-                             Building('Tavern', 'green', 1),
-                             Building('Temple', 'blue', 1),
-                             Building('Chapel', 'blue', 2)]
-            self._players.append(Player("Player-{}".format(n), starting_deck))
+            starting_deck = [Building.GreenBuilding('Tavern', 1),
+                             Building.GreenBuilding('Tavern', 1),
+                             Building.GreenBuilding('Temple', 1),
+                             Building.GreenBuilding('Chapel', 2)]
+            self._players.append(Player.Player("Player-{}".format(n), starting_deck))

@@ -1,3 +1,6 @@
+import Building
+
+
 class Player:
     def __init__(self, name, starting_deck):
         self._name = name
@@ -25,8 +28,9 @@ class Player:
         self._hand_deck.append(building_card)
 
     def build_building(self, building_card):
-        if (self._gold >= building_card.value and self._build_count > 0 and
-                    building_card.name not in [building.name for building in self._built_deck]):
+        assert isinstance(building_card, Building.Building)
+        if ((self._gold >= building_card.value) and
+                (self._build_count > 0 and building_card.name not in [building.name for building in self._built_deck])):
             self._build_count -= 1
             self._gold -= building_card.value
             self._hand_deck.remove(building_card)
