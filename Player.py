@@ -2,12 +2,13 @@ import Building
 
 
 class Player:
-    def __init__(self, name, starting_deck):
+    def __init__(self, name, starting_deck, place=1):
         self._name = name
         self._gold = 2
         self._hand_deck = starting_deck
         self._built_deck = []
         self._build_count = 1
+        self._place = place
 
     def __eq__(self, other):
         return True if self._name == other._name else False
@@ -21,11 +22,17 @@ class Player:
     def get_hand_deck(self):
         return self._hand_deck
 
+    def get_built_buildings(self):
+        return self._built_deck
+
     def take_gold(self):
         self._gold += 2
 
     def take_card(self, building_card):
         self._hand_deck.append(building_card)
+
+    def set_place(self, place):
+        self._place = place
 
     def build_building(self, building_card):
         assert isinstance(building_card, Building.Building)
