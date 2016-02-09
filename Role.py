@@ -6,15 +6,22 @@ class Role:
     def __init__(self):
         self.ability_used = False
         self.name = "Role"
+        self.value = 0
 
     def __str__(self):
         return self.name
 
     def __eq__(self, other):
-        return True if self.name == other.name else False
+        return True if (self.value == other.value and self.name == other.name) else False
 
     def __ne__(self, other):
         return not self.__eq__(other)
+
+    def __gt__(self, other):
+        return True if self.value > other.value else False
+
+    def __lt__(self, other):
+        return True if self.value < other.value else False
 
     def use_ability(self):
         self.ability_used = True

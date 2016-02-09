@@ -9,40 +9,7 @@ class TestBuildingDeck(unittest.TestCase):
     def setUp(self):
         self.building_deck = BuildingDeck.BuildingDeck()
 
-        for i in range(5):
-            self.building_deck.add(Building.GreenBuilding("Tavern", 1))
-        for i in range(4):
-            self.building_deck.add(Building.GreenBuilding("Market", 2))
-        for i in range(3):
-            self.building_deck.add(Building.GreenBuilding("Merchant's House", 2))
-            self.building_deck.add(Building.GreenBuilding("Dock", 3))
-            self.building_deck.add(Building.GreenBuilding("Port", 4))
-        for i in range(2):
-            self.building_deck.add(Building.GreenBuilding("Town Hall", 5))
-
-        for i in range(3):
-            self.building_deck.add(Building.BlueBuilding("Temple", 1))
-            self.building_deck.add(Building.BlueBuilding("Chapel", 2))
-            self.building_deck.add(Building.BlueBuilding("Monastery", 3))
-        for i in range(2):
-            self.building_deck.add(Building.BlueBuilding("Cathedral", 5))
-
-        for i in range(3):
-            self.building_deck.add(Building.RedBuilding("Sentry Tower", 1))
-            self.building_deck.add(Building.RedBuilding("Jail", 2))
-            self.building_deck.add(Building.RedBuilding("Warfield", 3))
-        for i in range(2):
-            self.building_deck.add(Building.RedBuilding("Stronghold", 5))
-
-        for i in range(5):
-            self.building_deck.add(Building.YellowBuilding("Estate", 3))
-        for i in range(4):
-            self.building_deck.add(Building.YellowBuilding("Castle", 4))
-        for i in range(3):
-            self.building_deck.add(Building.YellowBuilding("Palace", 5))
-
-        self.building_deck.add(Building.PurpleBuilding("University", 6))
-        self.building_deck.add(Building.PurpleBuilding("Dragon's Gate", 6))
+        self.building_deck.initialize_starting_deck()
 
     def test_starting_deck(self):
         self.assertEqual(self.building_deck.get_size(), 56)

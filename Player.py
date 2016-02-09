@@ -16,6 +16,9 @@ class Player:
     def __ne__(self, other):
         return not self.__eq__(other)
 
+    def get_built_deck(self):
+        return self._built_deck
+
     def get_gold(self):
         return self._gold
 
@@ -36,6 +39,7 @@ class Player:
 
     def build_building(self, building_card):
         assert isinstance(building_card, Building.Building)
+        assert building_card in self._hand_deck
         if ((self._gold >= building_card.value) and
                 (self._build_count > 0 and building_card.name not in [building.name for building in self._built_deck])):
             self._build_count -= 1
@@ -48,3 +52,7 @@ class Player:
 
     def tax(self):
         self._gold += 1
+
+
+if __name__ == '__main__':
+    pass

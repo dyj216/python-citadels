@@ -3,7 +3,7 @@ class Building:
         assert type(name) == str
         assert type(value) == int
         assert type(destroyable) == bool
-        self.name = name.title()
+        self.name = name
         self.value = value
         self.destroyable = destroyable
 
@@ -12,6 +12,9 @@ class Building:
 
     def __ne__(self, other):
         return not self.__eq__(other)
+
+    def __str__(self):
+        return "{}, Value: {}".format(self.name, self.value)
 
     def is_destroyable(self):
         return self.destroyable
@@ -25,30 +28,33 @@ class Building:
 
 class YellowBuilding(Building):
     def __init__(self, name, value, destroyable=True):
-        super(YellowBuilding, self).__init__(name, value, destroyable)
+        Building.__init__(self, name, value, destroyable)
 
 
-class RedBuilding(Building):
+class RedBuilding(object, Building):
     def __init__(self, name, value, destroyable=True):
-        super(RedBuilding, self).__init__(name, value, destroyable)
+        Building.__init__(self, name, value, destroyable)
 
 
 class GreenBuilding(Building):
     def __init__(self, name, value, destroyable=True):
-        super(GreenBuilding, self).__init__(name, value, destroyable)
+        Building.__init__(self, name, value, destroyable)
 
 
 class BlueBuilding(Building):
     def __init__(self, name, value, destroyable=True):
-        super(BlueBuilding, self).__init__(name, value, destroyable)
+        Building.__init__(self, name, value, destroyable)
 
 
 class PurpleBuilding(Building):
     def __init__(self, name, value, destroyable=True):
-        super(PurpleBuilding, self).__init__(name, value, destroyable)
+        Building.__init__(self, name, value, destroyable)
 
     def get_end_value(self):
         if self.name == "University" or self.name == "Dragon's Gate":
             return self.value + 2
         else:
             return self.value
+
+if __name__ == '__main__':
+    pass

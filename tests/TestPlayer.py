@@ -19,14 +19,7 @@ class TestPlayerStartingValues(unittest.TestCase):
         self.assertEqual(len(self.player.get_hand_deck()), 4)
 
 
-class TestPlayerTurnChoices(unittest.TestCase):
-    def setUp(self):
-        starting_deck = [Building.GreenBuilding('Tavern', 1),
-                         Building.GreenBuilding('Tavern', 1),
-                         Building.BlueBuilding('Temple', 1),
-                         Building.BlueBuilding('Chapel', 2)]
-        self.player = Player.Player("Napoleon", starting_deck)
-
+class TestPlayerTurnChoices(TestPlayerStartingValues):
     def test_start_player_turn_take_gold(self):
         self.player.take_gold()
         self.assertEqual(self.player.get_gold(), 4)
@@ -36,14 +29,7 @@ class TestPlayerTurnChoices(unittest.TestCase):
         self.assertEqual(len(self.player.get_hand_deck()), 5)
 
 
-class TestPlayerBuilding(unittest.TestCase):
-    def setUp(self):
-        starting_deck = [Building.GreenBuilding('Tavern', 1),
-                         Building.GreenBuilding('Tavern', 1),
-                         Building.BlueBuilding('Temple', 1),
-                         Building.BlueBuilding('Chapel', 2)]
-        self.player = Player.Player("Napoleon", starting_deck)
-
+class TestPlayerBuilding(TestPlayerStartingValues):
     def test_build_building(self):
         starting_gold = self.player.get_gold()
         building_to_build = self.player.get_hand_deck()[0]
@@ -71,17 +57,9 @@ class TestPlayerBuilding(unittest.TestCase):
         self.assertEqual(self.player.build_building(building_to_build_2), False)
 
 
-class TestPlayerTaxing(unittest.TestCase):
-    def setUp(self):
-        starting_deck = [Building.GreenBuilding('Tavern', 1),
-                         Building.GreenBuilding('Tavern', 1),
-                         Building.BlueBuilding('Temple', 1),
-                         Building.BlueBuilding('Chapel', 2)]
-        self.player = Player.Player("Napoleon", starting_deck)
-        # self.player.role = Merchant()
+class TestPlayerTaxing(TestPlayerStartingValues):
+    def test_green_taxing(self):
         tavern = Building.GreenBuilding('Tavern', 1)
         self.player.build_building(tavern)
-
-    def test_green_taxing(self):
         self.player.tax()
         self.assertEqual(self.player.get_gold(), 2)
