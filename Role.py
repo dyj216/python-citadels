@@ -35,26 +35,30 @@ class Role:
 
 class Assassin(Role):
     def __init__(self):
-        super(Assassin, self).__init__()
+        Role.__init__(self)
         self.name = "Assassin"
+        self.value = 1
 
 
 class Thief(Role):
     def __init__(self):
-        super(Thief, self).__init__()
+        Role.__init__(self)
         self.name = "Thief"
+        self.value = 2
 
 
 class Mage(Role):
     def __init__(self):
-        super(Mage, self).__init__()
+        Role.__init__(self)
         self.name = "Mage"
+        self.value = 3
 
 
 class King(Role):
     def __init__(self):
-        super(King, self).__init__()
+        Role.__init__(self)
         self.name = "King"
+        self.value = 4
 
     def tax(self, buildings):
         result = 0
@@ -72,8 +76,9 @@ class King(Role):
 
 class Bishop(Role):
     def __init__(self):
-        super(Bishop, self).__init__()
+        Role.__init__(self)
         self.name = "Bishop"
+        self.value = 5
 
     def tax(self, buildings):
         result = 0
@@ -92,8 +97,9 @@ class Bishop(Role):
 
 class Merchant(Role):
     def __init__(self):
-        super(Merchant, self).__init__()
+        Role.__init__(self)
         self.name = "Merchant"
+        self.value = 6
 
     def tax(self, buildings):
         result = 0
@@ -111,8 +117,9 @@ class Merchant(Role):
 
 class Architect(Role):
     def __init__(self):
-        super(Architect, self).__init__()
+        Role.__init__(self)
         self.name = "Architect"
+        self.value = 7
 
     def use_automatic_ability(self, player):
         self.increase_build_count(player)
@@ -123,8 +130,9 @@ class Architect(Role):
 
 class Warlord(Role):
     def __init__(self):
-        super(Warlord, self).__init__()
+        Role.__init__(self)
         self.name = "Warlord"
+        self.value = 8
 
     def tax(self, buildings):
         result = 0
